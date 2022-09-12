@@ -1,6 +1,5 @@
 <template>
     <div class="container"> 
-        <button @click="findMovie"> CIAO </button>
         <div class="row row-cols-4 g-3">
             <div v-for="(movie, i) in movies" :key="i">
                 <CardComponent :movie="movie"/>   
@@ -39,17 +38,21 @@ export default {
             .get(`${this.BASE_URI}?api_key=9857cfb37fc41b760e69c70f6d75b517&query=${this.movieTitle}`)
             .then((res) => {
                 console.log(res)
-                this.movies = res.data.results
+                this.movies = res.data.results;
             })
             .catch(error => {
                 if(error.response) {
-                    console.log(error.response);
+                    console.log(error.response)
                 }
-            })
+            });
         },   
     },
-    watch() {
-        this.findMovie()
+    watch: {
+        movieTitle(a,b) {
+            if(a != b) {
+                this.findMovie()
+            }
+        },
     },    
 };
 

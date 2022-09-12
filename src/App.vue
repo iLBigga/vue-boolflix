@@ -18,14 +18,14 @@ export default {
   data() {
       return {
         searchText: ''
-      }
+      };
   },
   methods: {
         getText(data) {
             this.searchText = data;
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
 <style lang="scss"> 

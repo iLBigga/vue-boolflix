@@ -10,10 +10,10 @@ export default {
     name: 'HeaderComponent',
     data() {
         return {
-            search: 'cacca',
-        }
-    }
-}
+            search: '',
+        };
+    },
+};
 </script>
 
 <style lang="scss" >

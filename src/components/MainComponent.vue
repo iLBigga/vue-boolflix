@@ -9,14 +9,12 @@
 </template>
 
 
-
 <script>
 
 import axios from "axios";
 import CardComponent from "./CardComponent.vue";
 
 export default {
-
     name: 'MainComponent',
     components: {
         CardComponent,
@@ -33,29 +31,23 @@ export default {
     },
     methods: {
         findMovie() {
-        axios
-            .get(`${this.BASE_URI}`, {
-                params : {
-                    api_key: '98186e6aae9de3ce0406c7aa396124e3',
-                    query: this.movieTitle,
-                },
-            })            
-            .then((res) => {
-                console.log(res)
-                this.movies = res.data.results;
-            })
-            .catch(error => {
-                if(error.response) {
-                    console.log(error.response)
-                }
-            });
+            if (this.movieTitle.trim() === '')
+                return
+            axios
+                .get(`${this.BASE_URI}`, {
+                    params : {
+                        api_key: '98186e6aae9de3ce0406c7aa396124e3',
+                        query: this.movieTitle.trim(),
+                    },
+                })            
+                .then((res) => {
+                    this.movies = res.data.results;
+                })
         },   
     },
     watch: {
         movieTitle(a,b) {
-            if(a != b) {
-                this.findMovie()
-            }
+            a != b ? this.findMovie() : null;
         },
     },    
 };

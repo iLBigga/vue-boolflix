@@ -10,6 +10,9 @@
 </template>
 
 <script>
+
+import getFlag from '../myFunction.js'
+
 export default {
     name: 'CardMovieComponent',
     props: {
@@ -21,40 +24,7 @@ export default {
         }
     },
     methods: {
-        getFlag(value) {
-            const flagHost= `https://flagcdn.com/16x12/`
-            let lang = value
-            switch (lang) {
-                case 'en': 
-                    lang = 'gb';
-                break;
-                case 'cs':
-                    lang = 'cz';
-                break;
-                case 'hi':
-                    lang = 'in';
-                break;
-                case 'ja':
-                    lang = 'jp'
-                break;
-                case 'da':
-                    lang = 'dk'
-                break;
-                case 'ko':
-                    lang = 'kr'
-                break;
-                case 'he':
-                    lang = 'il';
-                break;
-                case 'fa':
-                    lang = 'ir';
-                break;
-                case 'zh':
-                    lang = 'cn';                   
-            }
-            const src = `${flagHost}${lang}.png`
-            return src
-        }
+        getFlag,
     }
 }
 </script>

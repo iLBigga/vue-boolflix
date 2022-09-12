@@ -28,14 +28,18 @@ export default {
         return {
             movies: [],
             api_key: '98186e6aae9de3ce0406c7aa396124e3',
-            lenguage: 'it-IT',
             BASE_URI: 'https://api.themoviedb.org/3/search/movie'
         };
     },
     methods: {
         findMovie() {
         axios
-            .get(`${this.BASE_URI}?api_key=9857cfb37fc41b760e69c70f6d75b517&query=${this.movieTitle}`)
+            .get(`${this.BASE_URI}`, {
+                params : {
+                    api_key: '98186e6aae9de3ce0406c7aa396124e3',
+                    query: this.movieTitle,
+                },
+            })            
             .then((res) => {
                 console.log(res)
                 this.movies = res.data.results;

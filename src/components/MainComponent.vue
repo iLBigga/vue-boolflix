@@ -2,7 +2,7 @@
     <div class="container"> 
         <h2>Movies</h2>
         <div class="row row-cols-4 g-3">         
-            <div v-for="(movie, i) in movies" :key="i">
+            <div v-for="movie in movies" :key="movie.id">
                 <CardMovieComponent :movie="movie"/>   
             </div>
         </div>
@@ -36,8 +36,40 @@ export default {
             movies: [],
             tvShows: [],
             api_key: '98186e6aae9de3ce0406c7aa396124e3',
-            BASE_URI: 'https://api.themoviedb.org/3'
+            BASE_URI: 'https://api.themoviedb.org/3',
         };
+    },
+    computed: {
+        // ALTERNATIVA
+        // moviesMap() {
+        //     return this.movies.map((el) => {
+        //         const newMovie = {
+        //             id: el.id,
+        //             title: el.title,
+        //             original_title: el.original_title,
+        //             lang: el.original_language,
+        //             vote: Math.round(el.vote_average / 2),
+        //             poster: `${this.posterBaseUri}${el.poster_path}`
+        //         }
+        //         return newMovie
+        //     });
+        // },
+        // tvShowsMap() {
+        //     return this.tvShows.map(({
+        //         id, name, original_name, original_language, vote_average, poster_path
+        //     }) => {
+        //         const newTvShow = {
+        //             id,
+        //             title: name,
+        //             original_title: original_name,
+        //             lang: original_language,
+        //             vote: Math.round(vote_average / 2),
+        //             poster: `${this.posterBaseUri}${poster_path}`
+        //         }
+                    
+        //         return newTvShow
+        //     })
+        // }
     },
     methods: {
         findMovie() {
@@ -67,12 +99,14 @@ export default {
                 .then((res) => {
                     this.tvShows = res.data.results
                 })
-        }   
+        },   
     },
     watch: {
         movieTitle(a,b) {
-            a != b ? this.findMovie() : null;
-            a != b ? this.findTvShow() : null;
+            if(a != b) {
+                this.findTvShow(),
+                this.findMovie();
+            }
         },
     },    
 };

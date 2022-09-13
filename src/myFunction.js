@@ -27,7 +27,8 @@ function getFlag(value) {
             lang = 'ir';
         break;
         case 'zh':
-            lang = 'cn';                   
+            lang = 'cn';
+        break;              
     }
     const src = `${flagHost}${lang}.png`
     return src

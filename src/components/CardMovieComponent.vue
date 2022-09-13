@@ -4,13 +4,13 @@
         <ul class="card_info m-0 p-2">
             <li class="title">{{movie.title}}</li>
             <li class="original_title"><b>Titolo Originale: </b>{{movie.original_title}}</li>
-            <li class="lenguage">Lingua: <img :src="getFlag(movie.original_language)" alt=""> </li>
+            <li class="lenguage"><b>Lingua: </b><img :src="getFlag(movie.original_language)" alt=""> </li>
             <li class="vote">
-                <span>Voto: </span> 
+                <b>Voto: </b> 
                 <font-awesome-icon v-for="n in getVote(movie.vote_average)" :key="n" icon="fa-solid fa-star" />                     
                 <font-awesome-icon v-for="n in (5 - getVote(movie.vote_average))" :key="n + movie.vote_average" icon="fa-regular fa-star" />
             </li>
-            <li class="overview">OverView: {{movie.overview}}</li>
+            <li class="overview"><b>OverView: </b> {{movie.overview}}</li>
             
         </ul>
     </div>
@@ -27,7 +27,7 @@ export default {
     methods: {  
         getFlag,
         getPoster(path){
-            let src = require('../assets/not-found.png')
+            let src = require('../assets/Poster_not_available.png')
             const posterUri = 'https://image.tmdb.org/t/p/w342'
             if(path != null) {
                 src = `${posterUri}${path}`

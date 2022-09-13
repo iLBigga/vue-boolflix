@@ -24,5 +24,9 @@ export default {
 <style lang="scss" scoped>
     header {
         background-color: grey;
+
+            h1{
+                color: red;
+            }
     }
 </style>

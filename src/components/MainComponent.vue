@@ -1,18 +1,20 @@
 <template>
-    <div class="container"> 
-        <h2>Movies</h2>
-        <div class="row row-cols-4 g-3">         
-            <div v-for="movie in movies" :key="movie.id">
-                <CardMovieComponent :movie="movie"/>   
+    <main>
+        <div class="container py-3"> 
+            <h2 class="py-5">Movies</h2>
+            <div class="row row-cols-4 g-5">         
+                <div v-for="movie in movies" :key="movie.id">
+                    <CardMovieComponent :movie="movie"/>   
+                </div>
             </div>
+            <h2 class="py-5">Tv Shows</h2>
+            <div class="row row-cols-4 g-3">
+                <div v-for="(tvShow, i) in  tvShows" :key="i">
+                    <CardTvComponent :tvShow="tvShow"/>
+                </div>
+            </div>      
         </div>
-        <h2>Tv Show</h2>
-        <div class="row row-cols-4 g-3">
-            <div v-for="(tvShow, i) in  tvShows" :key="i">
-                <CardTvComponent :tvShow="tvShow"/>
-            </div>
-        </div>      
-    </div>
+    </main>
 </template>
 
 
@@ -115,6 +117,9 @@ export default {
 
 
 
-<style lang="scss" >
-    
+<style lang="scss" scoped>
+    main{
+        background-color: #121414;
+        color: white;
+    }
 </style>

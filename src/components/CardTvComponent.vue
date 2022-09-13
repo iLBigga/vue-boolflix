@@ -1,7 +1,7 @@
 <template>
     <div class="custom_card">
-        <ul class="text-center p-4">
-            <li class="poster"><img :src="getPoster(tvShow.poster_path)" alt=""></li>
+        <img :src="getPoster(tvShow.poster_path)" alt="">
+        <ul class="card_info m-0">
             <li class="title">{{tvShow.name}}</li>
             <li class="original_title"><b>Titolo Originale: </b>{{tvShow.original_name}}</li>
             <li class="lenguage">Lingua: </li>

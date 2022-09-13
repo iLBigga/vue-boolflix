@@ -1,7 +1,7 @@
 <template>
     <div class="custom_card">
-        <ul class="text-center p-4">
-            <li class="poster"><img :src="getPoster(movie.poster_path)" alt=""></li>
+        <img :src="getPoster(movie.poster_path)" alt="">
+        <ul class="card_info m-0 p-2">
             <li class="title">{{movie.title}}</li>
             <li class="original_title"><b>Titolo Originale: </b>{{movie.original_title}}</li>
             <li class="lenguage">Lingua: <img :src="getFlag(movie.original_language)" alt=""> </li>
@@ -10,6 +10,7 @@
                 <font-awesome-icon v-for="n in getVote(movie.vote_average)" :key="n" icon="fa-solid fa-star" />                     
                 <font-awesome-icon v-for="n in (5 - getVote(movie.vote_average))" :key="n + movie.vote_average" icon="fa-regular fa-star" />
             </li>
+            <li class="overview">OverView: {{movie.overview}}</li>
             
         </ul>
     </div>

@@ -5,3 +5,13 @@ ul, li, menu {
 img{
     max-width: 100%;
 }
+
+#app{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex-grow: 1;
+}

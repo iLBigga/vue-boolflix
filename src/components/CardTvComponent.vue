@@ -5,7 +5,12 @@
             <li class="title">{{tvShow.name}}</li>
             <li class="original_title"><b>Titolo Originale: </b>{{tvShow.original_name}}</li>
             <li class="lenguage">Lingua: </li>
-            <li class="vote">Voto: {{Math.round(tvShow.vote_average / 2)}}</li>
+            <li class="vote">
+                <span>Voto: </span> 
+                <font-awesome-icon v-for="n in getVote(tvShow.vote_average)" :key="n" icon="fa-solid fa-star" />
+                <font-awesome-icon v-for="n in (5 - getVote(tvShow.vote_average))" :key="n + tvShow.vote_average" icon="fa-regular fa-star" />
+            </li>
+            
         </ul>
     </div>
 </template>
@@ -27,7 +32,10 @@ export default {
                 src = `${posterUri}${path}`
             }
             return src
-        }
+        },
+        getVote(value){
+            return Math.floor(value / 2);
+        }   
     },
 };
 </script>

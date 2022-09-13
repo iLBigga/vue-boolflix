@@ -5,7 +5,12 @@
             <li class="title">{{movie.title}}</li>
             <li class="original_title"><b>Titolo Originale: </b>{{movie.original_title}}</li>
             <li class="lenguage">Lingua: <img :src="getFlag(movie.original_language)" alt=""> </li>
-            <li class="vote">Voto: {{Math.round(movie.vote_average / 2)}}</li>
+            <li class="vote">
+                <span>Voto: </span> 
+                <font-awesome-icon v-for="n in getVote(movie.vote_average)" :key="n" icon="fa-solid fa-star" />                     
+                <font-awesome-icon v-for="n in (5 - getVote(movie.vote_average))" :key="n + movie.vote_average" icon="fa-regular fa-star" />
+            </li>
+            
         </ul>
     </div>
 </template>
@@ -27,7 +32,10 @@ export default {
                 src = `${posterUri}${path}`
             }
             return src
-        }
+        },
+        getVote(value){
+            return Math.floor(value / 2);
+        },   
     },
 };
 </script>
